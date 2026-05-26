@@ -1,10 +1,9 @@
-
 interface FutureLoaderProps {
   text?: string;      
   fullScreen?: boolean;
 }
 
-export default function Loader({ text = "SYSTEM INITIALIZING", fullScreen = true }: FutureLoaderProps) {
+export function Loader({ text = "SYSTEM INITIALIZING", fullScreen = true }: FutureLoaderProps) {
   return (
     <div
       className={`
@@ -16,10 +15,10 @@ export default function Loader({ text = "SYSTEM INITIALIZING", fullScreen = true
       `}
     >
       <div className="relative flex items-center justify-center w-28 h-28">
-                <div className="absolute inset-0 border-[3px] border-transparent border-t-cyan-500 border-b-indigo-500 rounded-full animate-spin shadow-[0_0_20px_rgba(6,182,212,0.3)] duration-700"></div>
-                <div className="absolute inset-3 border-2 border-transparent border-l-emerald-500 border-r-purple-500 rounded-full animate-spin [animation-direction:reverse] opacity-70 duration-1000"></div>
-                <div className="absolute inset-6 border border-dashed border-cyan-400/30 rounded-full animate-spin duration-[3000ms]"></div>
-                <div className="absolute inset-8 bg-gradient-to-tr from-cyan-500 via-blue-600 to-indigo-500 rounded-full animate-pulse shadow-[0_0_30px_rgba(99,102,241,0.8)] flex items-center justify-center">
+        <div className="absolute inset-0 border-[3px] border-transparent border-t-cyan-500 border-b-indigo-500 rounded-full animate-spin shadow-[0_0_20px_rgba(6,182,212,0.3)] duration-700"></div>
+        <div className="absolute inset-3 border-2 border-transparent border-l-emerald-500 border-r-purple-500 rounded-full animate-spin [animation-direction:reverse] opacity-70 duration-1000"></div>
+        <div className="absolute inset-6 border border-dashed border-cyan-400/30 rounded-full animate-spin duration-[3000ms]"></div>
+        <div className="absolute inset-8 bg-gradient-to-tr from-cyan-500 via-blue-600 to-indigo-500 rounded-full animate-pulse shadow-[0_0_30px_rgba(99,102,241,0.8)] flex items-center justify-center">
           <div className="w-2 h-2 bg-white rounded-full animate-ping opacity-75"></div>
         </div>
       </div>

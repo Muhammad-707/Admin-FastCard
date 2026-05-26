@@ -5,7 +5,7 @@ import { store } from "@/store/store";
 import ThemeProvider from "./components/shared/ThemeProvider";
 import Layout from "./layout/layout";
 import { LogIn, Dashboard, Products, AddProduct, EditProduct, Orders, Category, Brand, Banner } from "@/router/router";
-import Loader from "./components/shared/loader";
+import {Loader} from "./components/shared/loader";
 
 const router = createBrowserRouter([
   {
