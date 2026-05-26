@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
+import { useTranslation } from "react-i18next";
+
 
 interface Props {
   isOpen: boolean;
@@ -8,6 +10,7 @@ interface Props {
 }
 
 export default function ColorModal({ isOpen, onClose, onSuccess }: Props) {
+  const { t } = useTranslation();
   const [colorName, setColorName] = useState('');
   const [hexCode, setHexCode] = useState('#000000'); 
   const [isLoading, setIsLoading] = useState(false);
@@ -41,11 +44,11 @@ export default function ColorModal({ isOpen, onClose, onSuccess }: Props) {
         <button onClick={onClose} className="absolute right-4 top-4 text-gray-400 hover:text-gray-600">
           <X size={20} />
         </button>
-        <h2 className="text-xl font-semibold mb-6 text-gray-800">New color</h2>
+        <h2 className="text-xl font-semibold mb-6 text-gray-800">{t("text175")}</h2>
         
         <div className="flex gap-4 mb-6">
           <div className="flex-1">
-            <label className="block text-xs text-gray-500 mb-1">Color name</label>
+            <label className="block text-xs text-gray-500 mb-1">{t("text176")}</label>
             <input 
               type="text" 
               value={colorName}
@@ -55,7 +58,7 @@ export default function ColorModal({ isOpen, onClose, onSuccess }: Props) {
             />
           </div>
           <div className="w-32">
-            <label className="block text-xs text-white mb-1">Hex</label>
+            <label className="block text-xs text-white mb-1">{t("text179")}</label>
             <div className="flex items-center border border-gray-300 rounded-md p-2 gap-2">
               <input 
                 type="color" 
@@ -70,14 +73,14 @@ export default function ColorModal({ isOpen, onClose, onSuccess }: Props) {
 
         <div className="flex justify-end gap-3">
           <button onClick={onClose} className="px-4 py-2 border border-gray-300 text-blue-600 rounded-md hover:bg-gray-50">
-            Cancel
+            {t("text177")}
           </button>
           <button 
             onClick={handleCreate} 
             disabled={isLoading}
             className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50"
           >
-            Create
+            {t("text178")}
           </button>
         </div>
       </div>

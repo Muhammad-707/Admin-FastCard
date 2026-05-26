@@ -1,6 +1,8 @@
 import i1 from "@/assets/receipt.png"
+import { useTranslation } from "react-i18next";
 
 export default function Orders() {
+  const { t } = useTranslation();
   const handleAddOrder = () => {
     console.log("Клик по кнопке: Добавить заказ");
   };
@@ -12,17 +14,16 @@ export default function Orders() {
           <img className="w-fit " src={i1} alt="" />
         </div>
         <h1 className="text-2xl font-bold tracking-tight text-slate-900 mb-2">
-          No Orders Yet
+          {t("text33")}
         </h1>
         <p className="text-sm text-slate-400 leading-relaxed mb-6 px-4">
-          All the upcoming orders from your store will be visible in this page.
-          You can add orders by yourself if you sell offline.
+          {t("text34")}
         </p>
         <button
           onClick={handleAddOrder}
           className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-medium text-sm rounded-lg transition-all shadow-sm shadow-blue-500/20">
           <span className="text-lg font-light leading-none">+</span>
-          Add order
+          {t("text35")}
         </button>
       </div>
     </div>

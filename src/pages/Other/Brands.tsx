@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Trash2, Edit2 } from 'lucide-react';
 import type { AppDispatch, RootState } from '@/store/store';
 import { fetchBrands, addBrand, updateBrand, deleteBrand, type Brand } from '@/reducer/BrandSlice';
+import { useTranslation } from "react-i18next";
 
 export default function Brands() {
+  const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
   const { brands, loading } = useSelector((state: RootState) => state.brand);
 
@@ -36,7 +38,7 @@ export default function Brands() {
   };
 
   const handleDelete = async (id: number) => {
-    if (window.confirm('Вы уверены, что хотите удалить бренд?')) {
+    if (window.confirm(`${t("text142")}`)) {
       await dispatch(deleteBrand(id));
       dispatch(fetchBrands());
     }
@@ -51,7 +53,7 @@ export default function Brands() {
       <div className="flex-1 w-full bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm overflow-x-auto transition-colors">
         <input 
           type="text" 
-          placeholder="Search brands..." 
+          placeholder={t("text143")}
           className="w-full mb-6 p-2.5 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 bg-transparent dark:text-white transition"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
@@ -60,8 +62,8 @@ export default function Brands() {
         <table className="w-full text-left border-collapse table-fixed">
           <thead>
             <tr className="border-b dark:border-gray-700 text-gray-400 text-sm uppercase tracking-wider">
-              <th className="pb-3 font-medium w-3/4">Brands</th>
-              <th className="pb-3 font-medium text-center w-1/4">Action</th>
+              <th className="pb-3 font-medium w-3/4">{t("text144")}</th>
+              <th className="pb-3 font-medium text-center w-1/4">{t("text145")}</th>
             </tr>
           </thead>
           <tbody>
@@ -100,7 +102,7 @@ export default function Brands() {
             ) : (
               <tr>
                 <td colSpan={2} className="py-8 text-center text-gray-500 dark:text-gray-400">
-                  Бренды не найдены
+                  {t("text146")}
                 </td>
               </tr>
             )}
@@ -113,10 +115,10 @@ export default function Brands() {
         </h2>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div>
-            <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">Brand Name</label>
+            <label className="block text-sm text-gray-500 dark:text-gray-400 mb-1">{t("text147")}</label>
             <input 
               type="text" 
-              placeholder="Enter brand name" 
+              placeholder={t("text145a")}
               className="w-full p-2.5 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 bg-transparent dark:text-white transition"
               value={brandName}
               onChange={(e) => setBrandName(e.target.value)}
@@ -128,7 +130,7 @@ export default function Brands() {
             type="submit" 
             className="w-full bg-blue-600 text-white font-medium py-2.5 rounded-lg hover:bg-blue-700 transition-colors mt-2"
           >
-            {editingId ? 'Update Brand' : 'Create Brand'}
+            {editingId ? `${t("text149")}` : `${t("text150")}`}
           </button>
           
           {editingId && (
@@ -140,7 +142,7 @@ export default function Brands() {
               }} 
               className="w-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 font-medium py-2.5 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
             >
-              Cancel Edit
+              {t("text148")}
             </button>
           )}
         </form>

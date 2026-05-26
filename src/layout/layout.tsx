@@ -12,8 +12,8 @@ export default function Layout() {
         <aside className="hidden md:block w-64 min-w-[256px] bg-[#1e2640] border-r border-gray-800 shrink-0 overflow-y-auto">
           <Sidebar />
         </aside>
-        <main className="flex-1 overflow-y-auto w-full min-w-[320px]">
-          <div className="mx-auto max-w-7xl h-full p-6">
+        <main className="flex-1 w-full min-w-[300px] overflow-y-auto">
+          <div className="mx-auto max-w-[1400px] h-full w-full">
             <Outlet />
           </div>
         </main>

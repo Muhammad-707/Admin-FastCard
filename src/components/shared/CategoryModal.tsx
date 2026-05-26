@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { X, UploadCloud, Trash } from 'lucide-react';
 import type { Category } from '@/reducer/CategorySlice';
+import { useTranslation } from "react-i18next";
 
 interface CategoryModalProps {
   isOpen: boolean;
@@ -12,6 +13,7 @@ interface CategoryModalProps {
 }
 
 export const CategoryModal: React.FC<CategoryModalProps> = ({ isOpen, onClose, mode, initialData, onSubmit, onDelete }) => {
+  const { t } = useTranslation();
   const [categoryName, setCategoryName] = useState('');
   const [imageFile, setImageFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -54,7 +56,7 @@ export const CategoryModal: React.FC<CategoryModalProps> = ({ isOpen, onClose, m
       <div className="w-[500px] bg-white rounded-xl shadow-xl overflow-hidden">
         <div className="flex justify-between items-center p-6 pb-4">
           <h2 className="text-xl font-bold text-gray-900">
-            {mode === 'add' ? 'Add category' : 'Edit category'}
+            {mode === 'add' ? `${t("text133")}` : `${t("text133")}`}
           </h2>
           <button onClick={onClose} className="text-gray-400 hover:text-gray-600 transition">
             <X size={20} />
@@ -64,7 +66,7 @@ export const CategoryModal: React.FC<CategoryModalProps> = ({ isOpen, onClose, m
         <div className="p-6 space-y-5">
           <input
             type="text"
-            placeholder="Category name"
+            placeholder={t("text135")}
             className="w-full border border-gray-200 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={categoryName}
             onChange={(e) => setCategoryName(e.target.value)}
@@ -78,7 +80,7 @@ export const CategoryModal: React.FC<CategoryModalProps> = ({ isOpen, onClose, m
               <UploadCloud size={20} className="text-gray-600" />
             </div>
             <p className="text-sm font-medium text-gray-800">
-              <span className="underline">Click to upload</span> or drag and drop
+              <span className="underline">{t("text136")}</span> {t("text137")}
             </p>
             <p className="text-xs text-gray-400 mt-1">(SVG, JPG, PNG, or gif maximum 900x400)</p>
             <input 
@@ -98,21 +100,21 @@ export const CategoryModal: React.FC<CategoryModalProps> = ({ isOpen, onClose, m
                   onClick={() => { onDelete(initialData.id); onClose(); }} 
                   className="mr-auto text-red-500 hover:text-red-600 flex items-center gap-1 text-sm font-medium"
                 >
-                  <Trash size={16} /> Delete
+                  <Trash size={16} /> {t("text138")}
                 </button>
             )}
           <button 
             onClick={onClose} 
             className="px-5 py-2.5 border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50"
           >
-            Cancel
+            {t("text139")}
           </button>
           <button 
             onClick={handleSubmit} 
             className="px-5 py-2.5 bg-blue-600 rounded-lg text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-50"
             disabled={!categoryName.trim()}
           >
-            {mode === 'add' ? 'Create' : 'Save changes'}
+            {mode === 'add' ? `${t("text140")}` : `${t("text141")}`}
           </button>
         </div>
       </div>

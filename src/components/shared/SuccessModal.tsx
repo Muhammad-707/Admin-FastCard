@@ -1,6 +1,8 @@
 import React from 'react';
 import { X, Check } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
+
 
 interface Props {
   isOpen: boolean;
@@ -11,6 +13,7 @@ interface Props {
 
 export default function SuccessModal({ isOpen, onClose, title = "Successfully add", isEdit = false }: Props) {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   if (!isOpen) return null;
 
   return (
@@ -34,14 +37,14 @@ export default function SuccessModal({ isOpen, onClose, title = "Successfully ad
             onClick={() => navigate('/products')} 
             className="px-4 py-2 border border-gray-300 text-blue-600 rounded-md text-sm font-medium hover:bg-gray-50"
           >
-            Go to products
+            {t("text180")}
           </button>
           {!isEdit && (
             <button 
               onClick={() => { onClose(); window.location.reload(); }} 
               className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700 flex items-center gap-1"
             >
-              <span>+ Add new</span>
+              <span>+ {t("text181")}</span>
             </button>
           )}
         </div>

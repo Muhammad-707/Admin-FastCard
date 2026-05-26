@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { Home, ClipboardList, Tag, Folder } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface NavItem {
   path: string;
@@ -11,28 +12,30 @@ interface NavItem {
 const navItems: NavItem[] = [
   { 
     path: "/dashboard", 
-    title: "Dashboard", 
+    title: "text9", 
     icon: <Home size={20} strokeWidth={2} /> 
   },
   { 
     path: "/orders", 
-    title: "Orders", 
+    title: "text10", 
     icon: <ClipboardList size={20} strokeWidth={2} />, 
     badge: 0
   },
   { 
     path: "/products", 
-    title: "Products", 
+    title: "text11", 
     icon: <Tag size={20} strokeWidth={2} /> 
   },
   { 
     path: "/category", 
-    title: "Other", 
+    title: "text12", 
     icon: <Folder size={20} strokeWidth={2} /> 
   },
 ];
 
 export default function Navlist() {
+  const { t } = useTranslation();
+
   return (
     <nav className="flex flex-col gap-2 w-full select-none">
       {navItems.map((item) => (
@@ -51,7 +54,7 @@ export default function Navlist() {
             <span className="shrink-0 transition-colors opacity-90">
               {item.icon}
             </span>
-            <span className="tracking-wide">{item.title}</span>
+            <span className="tracking-wide">{t(item.title)}</span>
           </div>
 
           {item.badge !== undefined && (
